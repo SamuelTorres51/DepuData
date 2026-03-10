@@ -8,10 +8,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.5" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DepuData.Application\DepuData.Application.csproj" />
+    <ProjectReference Include="..\DepuData.Domain\DepuData.Domain.csproj" />
+    <ProjectReference Include="..\DepuData.Infraestructure\DepuData.Infraestructure.csproj" />
   </ItemGroup>
 
 </Project>
