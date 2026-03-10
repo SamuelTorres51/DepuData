@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DepuData.API/DepuData.API.csproj" />
+    <Project Path="src/DepuData.Domain/DepuData.Domain.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,6 @@
+@DepuData.API_HostAddress = http://localhost:5011
+
+GET {{DepuData.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
