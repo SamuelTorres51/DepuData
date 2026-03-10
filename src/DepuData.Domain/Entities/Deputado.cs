@@ -5,6 +5,6 @@ public class Deputado {
     public string Nome { get; private set; } = string.Empty;
     public string Partido { get; private set; } = string.Empty;
     public string Estado { get; private set;  } = string.Empty;
-    public List<Despesas> Despesas { get; private set; } = [];
+    public List<Despesa> Despesas { get; private set; } = [];
 
 }
