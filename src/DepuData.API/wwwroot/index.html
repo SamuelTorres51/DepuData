@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>DepuData - Ranking de Gastos</title>
+    <link rel="stylesheet" href="/site.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header class="container header">
+        <div>
+            <h1>Ranking de Gastos</h1>
+            <p class="sub">Fonte: API da Câmara (via <code>/api/deputado</code>)</p>
+        </div>
+
+        <div class="actions">
+            <input id="filter" class="input" placeholder="Filtrar por nome..." />
+            <button id="reload" class="btn">Recarregar</button>
+        </div>
+    </header>
+
+    <main class="container grid">
+        <section class="card">
+            <div class="cardTitle">
+                <h2>Top 20</h2>
+                <span id="status" class="status">Carregando...</span>
+            </div>
+            <canvas id="chart" height="140"></canvas>
+        </section>
+
+        <section class="card">
+            <div class="cardTitle">
+                <h2>Lista</h2>
+                <span id="updatedAt" class="muted"></span>
+            </div>
+            <div id="list" class="list"></div>
+        </section>
+    </main>
+
+    <script src="/app.js"></script>
+</body>
+</html>
