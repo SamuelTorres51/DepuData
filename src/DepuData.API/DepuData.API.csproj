@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DepuData.Application\DepuData.Application.csproj" />
     <ProjectReference Include="..\DepuData.Domain\DepuData.Domain.csproj" />
     <ProjectReference Include="..\DepuData.Infraestructure\DepuData.Infraestructure.csproj" />

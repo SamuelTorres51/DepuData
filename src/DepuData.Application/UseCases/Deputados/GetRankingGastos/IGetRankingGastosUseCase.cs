@@ -3,5 +3,5 @@
 namespace DepuData.Application.UseCases.Deputados.GetRankingGastos;
 
 public interface IGetRankingGastosUseCase {
-    Task<List<GetRankingGastosResponse>> Execute(int deputadoId);
+    Task<List<GetRankingGastosResponse>> Execute();
 }

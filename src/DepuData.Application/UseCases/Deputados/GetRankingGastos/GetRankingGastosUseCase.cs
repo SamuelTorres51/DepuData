@@ -11,7 +11,7 @@ public class GetRankingGastosUseCase : IGetRankingGastosUseCase{
         _repository = repository;
     }
 
-    public async Task<List<GetRankingGastosResponse>> Execute(int deputadoId) {
+    public async Task<List<GetRankingGastosResponse>> Execute() {
         var deputados = await _repository.ObterDeputados();
 
         var tasks = deputados.Select(async deputado =>
