@@ -25,8 +25,7 @@ public class CamaraApiClient {
     public async Task<List<DespesaApiResponse>> ObterDespesasDeputado(int deputadoId) {
         var todas = new List<DespesaApiResponse>();
 
-        // Mantém seus critérios atuais, mas com paginação + 100 itens por página
-        string? url = $"deputados/{deputadoId}/despesas?itens={ItensPorPagina}&ordem=ASC&ordenarPor=ano";
+        string? url = $"deputados/{deputadoId}/despesas?ano=2025&itens={ItensPorPagina}&ordem=ASC";
 
         for (var pagina = 1; pagina <= MaxPaginasSeguranca && url is not null; pagina++) {
             var response = await _httpClient.GetFromJsonAsync<DespesasResponse>(url);

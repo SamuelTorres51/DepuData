@@ -15,7 +15,7 @@ public class GetRankingGastosUseCase : IGetRankingGastosUseCase{
         var deputados = await _repository.ObterDeputados();
 
         // Limita a 10 requisições simultâneas para evitar rate limiting
-        var semaphore = new SemaphoreSlim(10, 10);
+        var semaphore = new SemaphoreSlim(5, 5);
 
         var tasks = deputados.Select(async deputado =>
         {
