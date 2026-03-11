@@ -11,6 +11,18 @@ public class CamaraDespesaRepository : ICamaraDespesaRepository {
         _apiClient = apiClient;
     }
 
+    public async Task<List<Deputado>> ObterDeputados() {
+        var deputadosApi = await _apiClient.ObterDeputados();
+        return deputadosApi.Select(d =>
+            new Deputado(
+                d.Id,
+                d.Nome,
+                d.SiglaPartido,
+                d.SiglaUf,
+                d.UrlFoto
+            )
+        ).ToList();
+    }
 
     public async Task<List<Despesa>> ObterDespesasDeputado(int deputadoId) {
         var despesasApi = await _apiClient.ObterDespesasDeputado(deputadoId);

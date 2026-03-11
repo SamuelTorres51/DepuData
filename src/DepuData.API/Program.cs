@@ -1,4 +1,5 @@
-﻿using DepuData.Infraestructure.ExternalAPis.Camara;
+﻿using DepuData.Infraestructure;
+using DepuData.Infraestructure.ExternalAPis.Camara;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
+builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddHttpClient<CamaraApiClient>(client => {
     client.BaseAddress = new Uri("https://dadosabertos.camara.leg.br/api/v2/");
