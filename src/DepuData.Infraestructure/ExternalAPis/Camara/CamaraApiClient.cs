@@ -21,7 +21,7 @@ public class CamaraApiClient {
 
     public async Task<List<DespesaApiResponse>> ObterDespesasDeputado(int deputadoId) {
         var response = await _httpClient.GetFromJsonAsync<DespesasResponse>(
-            $"deputados/{deputadoId}/despesas");
+            $"deputados/{deputadoId}/despesas?itens=99&ordem=ASC&ordenarPor=ano");
 
         if(response is not null)
             return response.Dados;

@@ -14,16 +14,27 @@ public class GetRankingGastosUseCase : IGetRankingGastosUseCase{
     public async Task<List<GetRankingGastosResponse>> Execute() {
         var deputados = await _repository.ObterDeputados();
 
+        // Limita a 10 requisições simultâneas para evitar rate limiting
+        var semaphore = new SemaphoreSlim(10, 10);
+
         var tasks = deputados.Select(async deputado =>
         {
-            var despesas = await _repository.ObterDespesasDeputado(deputado.Id);
+            await semaphore.WaitAsync();
+            try
+            {
+                var despesas = await _repository.ObterDespesasDeputado(deputado.Id);
 
-            return new RankingDeputado {
-                Id = deputado.Id,
-                Nome = deputado.Nome,
-                Urlfoto = deputado.UrlFoto,
-                TotalGastos = despesas.Sum(d => d.Valor)
-            };
+                return new RankingDeputado {
+                    Id = deputado.Id,
+                    Nome = deputado.Nome,
+                    Urlfoto = deputado.UrlFoto,
+                    TotalGastos = despesas.Sum(d => d.Valor)
+                };
+            }
+            finally
+            {
+                semaphore.Release();
+            }
         });
 
         var ranking = await Task.WhenAll(tasks);
